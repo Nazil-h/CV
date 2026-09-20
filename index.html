@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CV — Muhammad Haqqi Nazili</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d0d0d;
+    --ink-2: #3a3a3a;
+    --ink-3: #7a7a7a;
+    --rule: #e0e0e0;
+    --accent: #1a1aff;
+    --accent-light: #eeeeff;
+    --surface: #f7f7f5;
+    --white: #ffffff;
+  }
+
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; border: none; }
+    a { color: var(--ink-2); }
+  }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: #efefed;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    line-height: 1.5;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 2px 40px rgba(0,0,0,0.08);
+  }
+
+  /* ── HEADER ─────────────────────────── */
+  .header {
+    padding: 3rem 3rem 2.5rem;
+    border-bottom: 2px solid var(--ink);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 2rem;
+  }
+
+  .name {
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .name span {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    font-family: 'Space Mono', monospace;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-position: top;
+  }
+
+  .tagline {
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    margin-top: 0.8rem;
+    max-width: 380px;
+    line-height: 1.6;
+  }
+
+  .contact-block {
+    text-align: right;
+    grid-column: 1 / -1;
+  }
+
+  .contact-block a,
+  .contact-block p {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--ink-2);
+    font-family: 'Space Mono', monospace;
+    text-decoration: none;
+    line-height: 2;
+  }
+
+  .contact-block a:hover { color: var(--accent); }
+
+  /* ── BADGE STRIP ─────────────────────── */
+  .badge-strip {
+    padding: 1rem 3rem;
+    background: var(--ink);
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.06em;
+  }
+
+  .badge.highlight {
+    background: var(--white);
+    color: var(--ink);
+    border-color: var(--white);
+    font-weight: 700;
+  }
+
+  /* ── BODY LAYOUT ─────────────────────── */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+  }
+
+  .main { padding: 2.5rem 3rem; border-right: 1px solid var(--rule); }
+  .side { padding: 2.5rem 1.75rem; background: var(--surface); }
+
+  /* ── SECTION ─────────────────────────── */
+  section { margin-bottom: 2.5rem; }
+  section:last-child { margin-bottom: 0; }
+
+  .sec-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ── ENTRY ─────────────────────────────── */
+  .entry { margin-bottom: 1.6rem; }
+  .entry:last-child { margin-bottom: 0; }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .entry-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .entry-where {
+    font-size: 0.82rem;
+    color: var(--ink-2);
+    margin-top: 0.15rem;
+  }
+
+  .entry-date {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--ink-3);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .entry-body {
+    margin-top: 0.5rem;
+    font-size: 0.87rem;
+    color: var(--ink-2);
+    line-height: 1.65;
+  }
+
+  .entry-body ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .entry-body ul li {
+    padding-left: 1.1rem;
+    position: relative;
+    margin-bottom: 0.2rem;
+  }
+
+  .entry-body ul li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--ink-3);
+  }
+
+  /* ── ACHIEVEMENT CARD ─────────────────── */
+  .ach-card {
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .ach-card .ach-title {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 0.88rem;
+  }
+
+  .ach-card .ach-sub {
+    color: var(--ink-2);
+    font-size: 0.8rem;
+    margin-top: 0.15rem;
+  }
+
+  /* ── SIDEBAR ─────────────────────────── */
+  .side .sec-label { border-bottom-color: #d0d0ce; }
+
+  .skill-group { margin-bottom: 1.5rem; }
+
+  .skill-cat {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .pill {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--white);
+    border: 1px solid var(--rule);
+    color: var(--ink-2);
+  }
+
+  .pill.strong {
+    border-color: var(--ink);
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .side-entry {
+    margin-bottom: 1.1rem;
+    font-size: 0.83rem;
+  }
+
+  .side-entry-title {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--ink);
+  }
+
+  .side-entry-sub {
+    color: var(--ink-2);
+    margin-top: 0.1rem;
+    line-height: 1.5;
+    font-size: 0.8rem;
+  }
+
+  .lang-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.83rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .lang-name { font-weight: 500; }
+
+  .lang-level {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--ink-3);
+  }
+
+  .lang-bar {
+    width: 100%;
+    height: 2px;
+    background: var(--rule);
+    margin-top: 0.3rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .lang-bar-fill {
+    height: 100%;
+    background: var(--ink);
+  }
+
+  /* ── FOOTER ──────────────────────────── */
+  .footer {
+    padding: 1rem 3rem;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 600px) {
+    .header { grid-template-columns: 1fr; padding: 2rem 1.5rem; }
+    .contact-block { text-align: left; }
+    .body { grid-template-columns: 1fr; }
+    .main { padding: 2rem 1.5rem; border-right: none; }
+    .side { padding: 2rem 1.5rem; }
+    .badge-strip { padding: 1rem 1.5rem; }
+    .footer { padding: 1rem 1.5rem; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+    .name { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div>
+      <div class="name">
+        <span>Curriculum Vitae</span>
+        Muhammad Haqqi Nazili
+      </div>
+      <p class="tagline">Mahasiswa Teknologi Informasi ITS — minat pada robotik, kecerdasan buatan, dan sistem cerdas berbasis computer vision.</p>
+    </div>
+    <div>
+      <div class="photo">
+        <img src="4x6.JPG" alt="photo">
+      </div>
+    </div>
+    <div class="contact-block">
+      <p>Surabaya, Indonesia</p>
+      <a href="mailto:haqqi@students.its.ac.id">haqqi.nazili.work@gmail.com</a>
+      <a href="www.github.com/Nazil-h">github.com/Nazil-h</a>
+      <a href="https://www.linkedin.com/in/muhammad-haqqi-nazili">linkedin.com/in/muhammad-haqqi-nazili</a>
+    </div>
+  </header>
+
+  <!-- BADGE STRIP -->
+  <div class="badge-strip">
+    <span class="badge highlight">C++</span>
+    <span class="badge highlight">Python</span>
+    <span class="badge">OpenCV</span>
+    <span class="badge">MediaPipe</span>
+    <span class="badge highlight">Competitive Programming</span>
+    <span class="badge">IoT</span>
+    <span class="badge">Web Dev</span>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- MAIN COLUMN -->
+    <main class="main">
+
+      <!-- ABOUT -->
+      <section>
+        <p class="sec-label">Tentang Saya</p>
+        <p style="font-size:0.9rem; color:var(--ink-2); line-height:1.75;">
+          Mahasiswa Teknologi Informasi angkatan 2026 di ITS dengan latar belakang kuat dalam competitive programming (OSN/TOKI) dan fondasi sains (SAINTEK). Aktif mengeksplorasi computer vision dengan Python, OpenCV, dan MediaPipe, serta tertarik mengaplikasikan kemampuan algoritmik untuk sistem robotik — mulai dari path planning hingga pengolahan citra real-time. Terbiasa berpikir analitis di bawah tekanan dan bekerja dalam tim.
+        </p>
+      </section>
+
+      <!-- PRESTASI -->
+      <section>
+        <p class="sec-label">Prestasi &amp; Kompetisi</p>
+
+        <div class="ach-card">
+          <div class="ach-title">Finalis — Mage 11, HIMATEKKOM ITS</div>
+          <div class="ach-sub">Competitive Programming · 2025</div>
+        </div>
+
+        <div class="ach-card">
+          <div class="ach-title">Peserta OSNK Informatika — Puspresnas</div>
+          <div class="ach-sub">Olimpiade Sains Nasional Tingkat Kabupaten/Kota · 2025</div>
+        </div>
+
+        <div class="ach-card">
+          <div class="ach-title">Juara 1 — Poster Competition, Universitas Hanzamwadi</div>
+          <div class="ach-sub">Educational poster focused on Natural Sciences (IPA) · 2026</div>
+        </div>
+
+        <div class="ach-card">
+          <div class="ach-title">Peserta Schematics 2024 — NPC</div>
+          <div class="ach-sub">Competitive Programming · 2024</div>
+        </div>
+      </section>
+
+      <!-- PENGALAMAN dan PROJECT-->
+      <section>
+        <p class="sec-label">Pengalaman &amp; Project</p>
+
+        <div class="entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-title">Maze Navigation Robot — UKM Robotics ITS</div>
+              <div class="entry-where">Project Mandiri (Github)</div>
+            </div>
+            <span class="entry-date">2026</span>
+          </div>
+          <div class="entry-body">
+            <ul>
+              <li>Membangun simulasi maze navigation robot menggunakan C++ secara mandiri.</li>
+              <li>Robot diarahkan untuk mencapai flag kemudian goal secara sekuensial.</li>
+              <li>Dikerjakan mandiri dengan pemahaman penuh terhadap seluruh logika dan implementasi kode (mengandung OOP).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-title">Eksplorasi Computer Vision</div>
+              <div class="entry-where">Project Mandiri</div>
+            </div>
+            <span class="entry-date">2025 – kini</span>
+          </div>
+          <div class="entry-body">
+            <ul>
+              <li>Belajar dan bereksperimen dengan OpenCV dan MediaPipe untuk deteksi objek dan gesture.</li>
+              <li>Menghubungkan visi komputer dengan konsep IoT untuk sistem cerdas sederhana.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-title">WEHANEWS — Full-Stack Web Developer</div>
+              <div class="entry-where">Project Web Sekolah (inactive) (Github)</div>
+            </div>
+            <span class="entry-date">2025</span>
+          </div>
+          <div class="entry-body">
+            <ul>
+              <li>Membangun frontend menggunakan HTML, CSS, dan JavaScript.</li>
+              <li>mengembangkan backend menggunakan PHP dan mengelola data menggunakan MySQL.</li>
+              <li>Mengembangkan situs web berita sekolah untuk mempublikasikan pengumuman dan artikel sekolah.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-title">Coding Camp — Full-Stack Web Developer</div>
+              <div class="entry-where">DBS Foundation × Dicoding</div>
+            </div>
+            <span class="entry-date">2026</span>
+          </div>
+          <div class="entry-body">
+            <ul>
+              <li>Mengikuti program intensif HTML, JavaScript, dan React.</li>
+              <li>Membangun proyek web end-to-end sebagai bagian dari kurikulum.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-title">Ketua Kelas — XII F-1</div>
+              <div class="entry-where">SMAS Wachid Hasyim 2</div>
+            </div>
+            <span class="entry-date">2025 – 2026</span>
+          </div>
+          <div class="entry-body">
+            <ul>
+              <li>Berkontribusi dalam memimpin dan mengkoordinasi kelas, serta menjadi jembatan antara anggota kelas dengan para guru.</li>
+              <li>Memimpin dan mengarahkan para struktur kelas atas kepentingan internal maupun eksternal kelas.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PENDIDIKAN -->
+      <section>
+        <p class="sec-label">Pendidikan</p>
+
+        <div class="entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-title">S1 Teknologi Informasi</div>
+              <div class="entry-where">Institut Teknologi Sepuluh Nopember (ITS)</div>
+            </div>
+            <span class="entry-date">2026 – kini</span>
+          </div>
+          <div class="entry-body">· Jalur UTBK (skor 665) · fokus: IoT, cybersecurity, cloud.</div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-head">
+            <div>
+              <div class="entry-title">SMA — Jurusan Saintek</div>
+              <div class="entry-where">SMAS Wachid Hasyim 2</div>
+            </div>
+            <span class="entry-date">2023 – 2026</span>
+          </div>
+          <div class="entry-body">Lulus dengan nilai TKA Matematika Lanjut dan Fisika predikat Istimewa.</div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="side">
+
+      <!-- SKILLS -->
+      <section>
+        <p class="sec-label">Keahlian</p>
+
+        <div class="skill-group">
+          <div class="skill-cat">Bahasa Pemrograman</div>
+          <div class="skill-list">
+            <span class="pill strong">C++</span>
+            <span class="pill strong">Python</span>
+            <span class="pill strong">C</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">PHP</span>
+            <span class="pill">Dart / Flutter</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-cat">Computer Vision &amp; AI</div>
+          <div class="skill-list">
+            <span class="pill strong">OpenCV</span>
+            <span class="pill strong">MediaPipe</span>
+            <span class="pill">NumPy</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-cat">System &amp; Tools</div>
+          <div class="skill-list">
+            <span class="pill">Linux (Arch)</span>
+            <span class="pill strong">WSL</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-cat">Web &amp; Tools</div>
+          <div class="skill-list">
+            <span class="pill">React</span>
+            <span class="pill">HTML/CSS</span>
+            <span class="pill">Git</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-cat">Algoritma</div>
+          <div class="skill-list">
+            <span class="pill strong">Competitive Programming</span>
+            <span class="pill">Struktur Data</span>
+            <span class="pill">Kombinatorika</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- BAHASA -->
+      <section>
+        <p class="sec-label">Bahasa</p>
+
+        <div class="lang-row">
+          <span class="lang-name">Indonesia</span>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
+
+        <div class="lang-row">
+          <span class="lang-name">Inggris</span>
+          <span class="lang-level">TEFL ≥ 390</span>
+        </div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:57.61%"></div></div>
+
+        <div class="lang-row">
+          <span class="lang-name">Arab</span>
+          <span class="lang-level">Pasif</span>
+        </div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:50%"></div></div>
+      </section>
+
+      <!-- MINAT RISET -->
+      <section>
+        <p class="sec-label">Minat Riset</p>
+        <div class="side-entry">
+          <div class="side-entry-title">Computer Vision</div>
+          <div class="side-entry-sub">Deteksi objek, gesture, dan pengolahan citra real-time.</div>
+        </div>
+        <div class="side-entry">
+          <div class="side-entry-title">Robotika &amp; IoT</div>
+          <div class="side-entry-sub">Integrasi sensor, aktuator, dan sistem cerdas embedded.</div>
+        </div>
+        <div class="side-entry">
+          <div class="side-entry-title">Algoritma &amp; Optimasi</div>
+          <div class="side-entry-sub">Path planning, pencarian heuristik, dan pemrosesan data efisien.</div>
+        </div>
+      </section>
+
+      <!-- TAMBAHAN -->
+      <section>
+        <p class="sec-label">Lainnya</p>
+        <div class="side-entry">
+          <div class="side-entry-sub">Biasa bekerja di lingkungan Linux (EndeavourOS / Arch-based)</div>
+        </div>
+        <div class="side-entry">
+          <div class="side-entry-sub">Siap berkontribusi aktif dalam tim riset multidisiplin</div>
+        </div>
+      </section>
+
+    </aside>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-note">Updated · September 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
