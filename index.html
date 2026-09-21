@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CV — Muhammad Haqqi Nazili</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -18,6 +19,39 @@
     --surface: #f7f7f5;
     --white: #ffffff;
   }
+
+ /* ── EXPORT BUTTON ── */
+.export-bar {
+  max-width: 780px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-export {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.6rem 1.4rem;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.15s;
+}
+
+.btn-export:hover { background: var(--accent); }
+
+.btn-export:disabled {
+  background: var(--ink-3);
+  cursor: not-allowed;
+}
+
+@media print { .export-bar { display: none; } }
 
   @media print {
     body { background: white; }
@@ -341,7 +375,12 @@
 </style>
 </head>
 <body>
-<div class="page">
+ <div class="export-bar">
+  <button class="btn-export" id="btnExport" onclick="exportPDF()">
+    ↓ &nbsp;Export PDF
+  </button>
+ </div>
+<div class="page" id="cvPage">
 
   <!-- HEADER -->
   <header class="header">
@@ -646,5 +685,26 @@
   </footer>
 
 </div>
+ <script>
+  function exportPDF() {
+    const btn = document.getElementById('btnExport');
+    btn.disabled = true;
+    btn.textContent = 'Generating...';
+
+    const element = document.getElementById('cvPage');
+    const opt = {
+      margin:       0,
+      filename:     'CV_Muhammad_Haqqi.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+      jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    html2pdf().set(opt).from(element).save().then(() => {
+      btn.disabled = false;
+      btn.innerHTML = '↓ &nbsp;Export PDF';
+    });
+  }
+</script>
 </body>
 </html>
